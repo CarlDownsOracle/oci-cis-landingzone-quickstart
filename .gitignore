@@ -11,5 +11,5 @@
 **/terraform_*.tfvars
 test/**
 *.csv
-**/quickstart-developer-input.tfvars
+**/*developer*.tfvars
 **/.idea
