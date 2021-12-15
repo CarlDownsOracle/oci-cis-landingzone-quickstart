@@ -10,4 +10,4 @@
 **/terraform_*.tfvars
 test/**
 *.csv
-quickstart-developer-input.tfvars
+**/quickstart-developer-input.tfvars
