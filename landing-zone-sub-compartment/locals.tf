@@ -40,7 +40,7 @@ locals {
   announcement_reader_group_name = var.use_existing_groups == false ? "${var.service_label}${var.announce_label}${var.group_label}" : data.oci_identity_groups.existing_announcement_reader_group.groups[0].name
   exainfra_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}${var.exadata_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_exainfra_admin_group.groups[0].name
   cost_admin_group_name          = var.use_existing_groups == false ? "${var.service_label}${var.cost_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_cost_admin_group.groups[0].name
-  compute_agent_group_name       = "${var.service_label}${var.appdev_label}${var.compute_label}${var.agent_label}${var.dynamic_group_label}"
+  compute_agent_group_name       = "${var.service_label}-appdev-computeagent-dynamic-group"
 
   # Policy names
   security_admin_policy_name      = "${var.service_label}${var.security_label}${var.admin_label}${var.policy_label}"
