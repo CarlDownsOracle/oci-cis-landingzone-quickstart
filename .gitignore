@@ -1,5 +1,6 @@
 **/*.tfstate*
 **/*.out
+**/*.txt
 **/.terraform/*
 **/.terraform.*
 **/.DS_Store
