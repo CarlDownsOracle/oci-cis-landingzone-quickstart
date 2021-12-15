@@ -12,19 +12,33 @@ private_key_path     = "<path_to_user_private_key_file>"
 private_key_password = ""
 
 
-### Environment/IAM variables
+### Where to Deploy
 region        = "<tenancy_region>"
 
+# Service Name Prefix Label
 service_label = "<a_label_to_prefix_resource_names_with>"
 
-top_label = "-top"
+# Service Name Postfix Labels
 security_label = "-security"
 group_label = "-group"
+dynamic_group_label = "-dynamic-group"
 compartment_label = "-cmp"
+enclosing_compartment_label = "-top"
 network_label = "-network"
 appdev_label = "-appdev"
 database_label = "-database"
 exadata_label = "-exainfra"
+admin_label = "-admin"
+iam_label = "-iam"
+cred_label = "-cred"
+auditor_label = "-auditor"
+announce_label = "-announcement-reader"
+cost_label = "-cost"
+policy_label = "-policy"
+svc_policy_label = "-services-policy"
+root_policy_label = "-root-policy"
+compute_label = "-compute"
+agent_label = "-agent"
 
 # use_enclosing_compartment               = false
 # existing_enclosing_compartment_ocid     = "<ocid>" # Compartment OCID where Landing Zone compartments are created.

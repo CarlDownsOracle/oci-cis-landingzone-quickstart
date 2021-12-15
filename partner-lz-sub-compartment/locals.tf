@@ -13,7 +13,7 @@ locals {
 
   ### IAM
   # Default compartment names
-  default_enclosing_compartment = {key:"${var.service_label}${var.top_label}${var.compartment_label}",          name:"${var.service_label}${var.top_label}${var.compartment_label}"}
+  default_enclosing_compartment = {key:"${var.service_label}${var.enclosing_compartment_label}${var.compartment_label}",          name:"${var.service_label}${var.enclosing_compartment_label}${var.compartment_label}"}
   security_compartment          = {key:"${var.service_label}${var.security_label}${var.compartment_label}",     name:"${var.service_label}${var.security_label}${var.compartment_label}"}
   network_compartment           = {key:"${var.service_label}${var.network_label}${var.compartment_label}",      name:"${var.service_label}${var.network_label}${var.compartment_label}"}
   database_compartment          = {key:"${var.service_label}${var.database_label}${var.compartment_label}",     name:"${var.service_label}${var.database_label}${var.compartment_label}"}
@@ -30,38 +30,38 @@ locals {
   use_existing_tenancy_policies = var.policies_in_root_compartment == "CREATE" ? false : true
 
   # Group names
-  security_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}-security-admin-group" : data.oci_identity_groups.existing_security_admin_group.groups[0].name
-  network_admin_group_name       = var.use_existing_groups == false ? "${var.service_label}-network-admin-group" : data.oci_identity_groups.existing_network_admin_group.groups[0].name
-  database_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}-database-admin-group" : data.oci_identity_groups.existing_database_admin_group.groups[0].name
-  appdev_admin_group_name        = var.use_existing_groups == false ? "${var.service_label}-appdev-admin-group" : data.oci_identity_groups.existing_appdev_admin_group.groups[0].name
-  iam_admin_group_name           = var.use_existing_groups == false ? "${var.service_label}-iam-admin-group" : data.oci_identity_groups.existing_iam_admin_group.groups[0].name
-  cred_admin_group_name          = var.use_existing_groups == false ? "${var.service_label}-cred-admin-group" : data.oci_identity_groups.existing_cred_admin_group.groups[0].name
-  auditor_group_name             = var.use_existing_groups == false ? "${var.service_label}-auditor-group" : data.oci_identity_groups.existing_auditor_group.groups[0].name
-  announcement_reader_group_name = var.use_existing_groups == false ? "${var.service_label}-announcement-reader-group" : data.oci_identity_groups.existing_announcement_reader_group.groups[0].name
-  exainfra_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}-exainfra-admin-group" : data.oci_identity_groups.existing_exainfra_admin_group.groups[0].name
-  cost_admin_group_name          = var.use_existing_groups == false ? "${var.service_label}-cost-admin-group" : data.oci_identity_groups.existing_cost_admin_group.groups[0].name
-  compute_agent_group_name       = "${var.service_label}-appdev-computeagent-dynamic-group"
+  security_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}${var.security_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_security_admin_group.groups[0].name
+  network_admin_group_name       = var.use_existing_groups == false ? "${var.service_label}${var.network_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_network_admin_group.groups[0].name
+  database_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}${var.database_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_database_admin_group.groups[0].name
+  appdev_admin_group_name        = var.use_existing_groups == false ? "${var.service_label}${var.appdev_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_appdev_admin_group.groups[0].name
+  iam_admin_group_name           = var.use_existing_groups == false ? "${var.service_label}${var.iam_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_iam_admin_group.groups[0].name
+  cred_admin_group_name          = var.use_existing_groups == false ? "${var.service_label}${var.cred_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_cred_admin_group.groups[0].name
+  auditor_group_name             = var.use_existing_groups == false ? "${var.service_label}${var.auditor_label}${var.group_label}" : data.oci_identity_groups.existing_auditor_group.groups[0].name
+  announcement_reader_group_name = var.use_existing_groups == false ? "${var.service_label}${var.announce_label}${var.group_label}" : data.oci_identity_groups.existing_announcement_reader_group.groups[0].name
+  exainfra_admin_group_name      = var.use_existing_groups == false ? "${var.service_label}${var.exadata_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_exainfra_admin_group.groups[0].name
+  cost_admin_group_name          = var.use_existing_groups == false ? "${var.service_label}${var.cost_label}${var.admin_label}${var.group_label}" : data.oci_identity_groups.existing_cost_admin_group.groups[0].name
+  compute_agent_group_name       = "${var.service_label}${var.appdev_label}${var.compute_label}${var.agent_label}${var.dynamic_group_label}"
 
   # Policy names
-  security_admin_policy_name      = "${var.service_label}-security-admin-policy"
-  security_admin_root_policy_name = "${var.service_label}-security-admin-root-policy"
-  network_admin_policy_name       = "${var.service_label}-network-admin-policy"
-  compute_agent_policy_name       = "${var.service_label}-compute-agent-policy"
-  network_admin_root_policy_name  = "${var.service_label}-network-admin-root-policy"
-  database_admin_policy_name      = "${var.service_label}-database-admin-policy"
-  database_dynamic_group_policy_name = "${var.service_label}-database-dynamic_group-policy"
-  database_admin_root_policy_name = "${var.service_label}-database-admin-root-policy"
-  appdev_admin_policy_name        = "${var.service_label}-appdev-admin-policy"
-  appdev_admin_root_policy_name   = "${var.service_label}-appdev-admin-root-policy"
-  iam_admin_policy_name           = "${var.service_label}-iam-admin-policy"
-  iam_admin_root_policy_name      = "${var.service_label}-iam-admin-root-policy"
-  cred_admin_policy_name          = "${var.service_label}-credential-admin-policy"
-  auditor_policy_name             = "${var.service_label}-auditor-policy"
-  announcement_reader_policy_name = "${var.service_label}-announcement-reader-policy"
-  exainfra_admin_policy_name      = "${var.service_label}-exainfra-admin-policy"
-  cost_admin_root_policy_name  = "${var.service_label}-cost-admin-root-policy"
+  security_admin_policy_name      = "${var.service_label}${var.security_label}${var.admin_label}${var.policy_label}"
+  security_admin_root_policy_name = "${var.service_label}${var.security_label}${var.admin_label}${var.root_policy_label}"
+  network_admin_policy_name       = "${var.service_label}${var.network_label}${var.admin_label}${var.policy_label}"
+  compute_agent_policy_name       = "${var.service_label}${var.compute_label}${var.agent_label}${var.policy_label}"
+  network_admin_root_policy_name  = "${var.service_label}${var.network_label}${var.admin_label}${var.root_policy_label}"
+  database_admin_policy_name      = "${var.service_label}${var.database_label}${var.admin_label}${var.policy_label}"
+  database_dynamic_group_policy_name = "${var.service_label}${var.database_label}${var.dynamic_group_label}${var.policy_label}"
+  database_admin_root_policy_name = "${var.service_label}${var.database_label}${var.admin_label}${var.root_policy_label}"
+  appdev_admin_policy_name        = "${var.service_label}${var.appdev_label}${var.admin_label}${var.policy_label}"
+  appdev_admin_root_policy_name   = "${var.service_label}${var.appdev_label}${var.admin_label}${var.root_policy_label}"
+  iam_admin_policy_name           = "${var.service_label}${var.iam_label}${var.admin_label}${var.policy_label}"
+  iam_admin_root_policy_name      = "${var.service_label}${var.iam_label}${var.admin_label}${var.root_policy_label}"
+  cred_admin_policy_name          = "${var.service_label}${var.cred_label}${var.admin_label}${var.policy_label}"
+  auditor_policy_name             = "${var.service_label}${var.auditor_label}${var.policy_label}"
+  announcement_reader_policy_name = "${var.service_label}${var.announce_label}${var.policy_label}"
+  exainfra_admin_policy_name      = "${var.service_label}${var.exadata_label}${var.admin_label}${var.policy_label}"
+  cost_admin_root_policy_name  = "${var.service_label}${var.cost_label}${var.admin_label}${var.root_policy_label}"
 
-  services_policy_name   = "${var.service_label}-services-policy"
+  services_policy_name   = "${var.service_label}${var.svc_policy_label}"
   cloud_guard_statements = ["Allow service cloudguard to read keys in tenancy",
                             "Allow service cloudguard to read compartments in tenancy",
                             "Allow service cloudguard to read tenancies in tenancy",
@@ -103,7 +103,7 @@ locals {
   spoke_subnet_names = ["web", "app", "db"]
   # Subnet Names used can be changed first subnet will be Public if var.no_internet_access is false
   dmz_subnet_names = ["outdoor", "indoor", "mgmt", "ha", "diag"]
-  # Mgmg subnet is public by default.
+  # Mgmt subnet is public by default.
   is_mgmt_subnet_public = true
 
   dmz_vcn_name = var.dmz_vcn_cidr != null ? {

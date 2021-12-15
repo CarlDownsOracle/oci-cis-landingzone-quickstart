@@ -1,69 +1,33 @@
 # Copyright (c) 2021 Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
-# Environment
+#  Naming Label Variables
 variable "service_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.service_label)) > 0
-    error_message = "Validation failed for service_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
+//  validation {
+//    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.service_label)) > 0
+//    error_message = "Validation failed for service_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
+//  }
 }
-
-variable "security_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.security_label)) > 0
-    error_message = "Validation failed for security_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "top_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.top_label)) > 0
-    error_message = "Validation failed for top_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "group_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.group_label)) > 0
-    error_message = "Validation failed for group_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "compartment_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.compartment_label)) > 0
-    error_message = "Validation failed for compartment_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "network_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.network_label)) > 0
-    error_message = "Validation failed for network_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "appdev_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.appdev_label)) > 0
-    error_message = "Validation failed for appdev_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "database_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.database_label)) > 0
-    error_message = "Validation failed for database_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
-
-variable "exadata_label" {
-  validation {
-    condition     = length(regexall("^[A-Za-z][A-Za-z0-9]{1,7}$", var.exadata_label)) > 0
-    error_message = "Validation failed for exadata_label: value is required and must contain alphanumeric characters only, starting with a letter up to a maximum of 8 characters."
-  }
-}
+variable "group_label" {}
+variable "compartment_label" {}
+variable "enclosing_compartment_label" {}
+variable "security_label" {}
+variable "network_label" {}
+variable "appdev_label" {}
+variable "database_label" {}
+variable "exadata_label" {}
+variable "admin_label" {}
+variable "iam_label" {}
+variable "cred_label" {}
+variable "auditor_label" {}
+variable "announce_label" {}
+variable "cost_label" {}
+variable "dynamic_group_label" {}
+variable "policy_label" {}
+variable "svc_policy_label" {}
+variable "root_policy_label" {}
+variable "compute_label" {}
+variable "agent_label" {}
 
 
 variable "tenancy_ocid" {}
