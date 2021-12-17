@@ -13,3 +13,4 @@ test/**
 *.csv
 **/*developer*.tfvars
 **/.idea
+**/.terraform*
